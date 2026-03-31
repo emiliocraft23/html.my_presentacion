@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portafolio — Emilio Josue Castillo Flores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="brand">
+        <h1>Emilio Josue Castillo Flores</h1>
+        <p class="tagline">Ingeniería en Sistemas de la Información</p>
+      </div>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#presentacion" class="nav-link">Presentación</a>
+        <a href="#habilidades" class="nav-link">Habilidades</a>
+        <a href="#experiencias" class="nav-link">Experiencias</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section id="presentacion" class="panel hero" tabindex="-1">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>Hola, soy <span class="name">Emilio Josue Castillo Flores</span></h1>
+          <p class="lead">Ingeniería en Sistemas de la Información</p>
+          <p class="ctas">
+            <a href="https://linkedin.com/in/tu-perfil" class="btn primary" target="_blank" rel="noopener noreferrer">Disponible para trabajar</a>
+            <a href="#contacto" class="btn secondary">Contactar</a>
+          </p>
+          <p class="meta">1 año de experiencia • Quito, Ecuador</p>
+        </div>
+        <div class="hero-media">
+          <img src="css/fotoemilio.jpeg" alt="Foto de Emilio Josue Castillo Flores" class="hero-avatar" width="240" height="240">
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades" class="panel">
+      <h2>Habilidades</h2>
+      <p>Organizo mis competencias en tecnologías, herramientas y metodologías:</p>
+      <ul class="skills">
+        <li>Lenguajes: HTML, Python, Unix, Java, CSS</li>
+        <li>Herramientas/Aplicaciones: GitHub, SQL</li>
+      </ul>
+    </section>
+
+    <section id="experiencias" class="panel">
+      <h2>Experiencias</h2>
+      <ul class="experiences">
+        <li>Diseñador y marketing digital en RHevoluciona</li>
+        <li>Diseñador y Marketing digital en CFdistribuidores</li>
+        <li>Diseñador web y Marketing digital en Integraprotech (por confirmar)</li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="panel">
+      <h2>Contacto</h2>
+      <p>Puedes contactarme por alguno de los siguientes medios:</p>
+      <ul class="contacts">
+        <li>Email: <a href="mailto:emcastillofl@uide.edu.ec">emcastillofl@uide.edu.ec</a></li>
+        <li>Teléfono: <a href="tel:+593961285601">+593 96 128 5601</a></li>
+        <li>Descargar CV: <a class="btn download" href="cv/cv.jpeg" download>Descargar CV</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <small>© <span id="year"></span> Emilio Josue Castillo Flores — Portafolio</small>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const links = document.querySelectorAll('.main-nav a');
+    const panels = document.querySelectorAll('.panel');
+
+    function show(id){
+      panels.forEach(p => p.classList.toggle('active', p.id === id));
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      const el = document.getElementById(id);
+      if(el){ el.focus(); }
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').substring(1);
+        show(id);
+        history.replaceState(null,'', '#' + id);
+      });
+    });
+
+    const start = location.hash ? location.hash.substring(1) : 'presentacion';
+    show(start);
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
